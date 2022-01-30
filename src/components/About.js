@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function About() {
+export default function About(props) {
   return (
-    <div>
-      <div className="container" style={{marginTtop: '30px',  width: '80%'}}>
+    <div style={props.style} className="containerBox"> 
+      <div className="container" style={{marginTop: '40px', width: '80%'}}>
         <h1 style={{fontWeight: 'bolder'}}>TextUtils</h1>
         <p>
           Paragraphs are the group of sentences combined together, about a
@@ -39,7 +39,6 @@ export default function About() {
           of a Paragraph- As you can see that the main idea of the paragraph was
           describing the room. Then there are many supporting sentences
           supporting the main idea and expanding it in a way that the picture
-          becomes clear in the reader’s mind. Concluding sentence “ I felt that
           I breathed an atmosphere of sorrow. An air of stern, deep, and
           irredeemable gloom hung over and pervaded all,” This sentence
           summarised how the room looked and what feeling ran through his mind.

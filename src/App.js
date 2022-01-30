@@ -3,10 +3,10 @@ import "./App.css";
 import OurNavbar from "./components/OurNavbar";
 import TextForm from "./components/TextForm";
 import Alert from "./components/Alert";
-// import About from "./components/About";
-// import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import About from "./components/About";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-let alertheight = document.getElementById('alertheight');
+// let alertheight = document.getElementById("alertheight");
 
 function App() {
   const [Mystyle, setMystyle] = useState({
@@ -24,6 +24,10 @@ function App() {
     main: null,
     msg: null,
   });
+  const [aboutStyle, setAboutStyle] = useState({
+    color: 'black',
+    backgroundColor: 'white',
+  })
 
   const ToggleMode = () => {
     if (Nav === "light") {
@@ -40,7 +44,14 @@ function App() {
       showAlert("danger", "OOPs...", "Dark Mode has been disabled!!");
       document.title = "TextUtils";
 
-    } else {
+      setAboutStyle({
+        color: 'black',
+        backgroundColor: 'white',
+      })
+
+    } 
+    
+    else {
       setMode("dark");
       setbtnKaColour("light");
       setNav("light");
@@ -53,6 +64,12 @@ function App() {
 
       showAlert("success", "SUCCESS!!", "Dark Mode has been enabled!!");
       document.title = "TextUtils- Dark Mode";
+
+      setAboutStyle({
+        color: 'white',
+        backgroundColor: 'rgb(30, 30, 30)',
+      })
+
     }
   };
 
@@ -65,6 +82,11 @@ function App() {
     setbtnKaColour("light");
     document.title = "TextUtils- Coloured Mode";
     // alertheight.style.backgroundColor = "black";
+
+    setAboutStyle({
+      color: 'white',
+      backgroundColor: 'rgb(62, 62, 62)',
+    })
   };
 
   const colorchangeMode2 = () => {
@@ -75,6 +97,11 @@ function App() {
 
     setbtnKaColour("light");
     document.title = "TextUtils- Coloured Mode";
+
+    setAboutStyle({
+      color: 'white',
+      backgroundColor: 'rgb(2, 56, 2)',
+    })
   };
 
   const colorchangeMode3 = () => {
@@ -85,6 +112,12 @@ function App() {
 
     setbtnKaColour("light");
     document.title = "TextUtils- Coloured Mode";
+
+    setAboutStyle({
+      color: "white",
+      backgroundColor: "rgb(123, 3, 3)",
+    });
+
   };
 
   const colorchangeMode4 = () => {
@@ -95,6 +128,11 @@ function App() {
 
     setbtnKaColour("dark");
     document.title = "TextUtils- Coloured Mode";
+
+    setAboutStyle({
+      color: "black",
+      backgroundColor: "rgb(191, 191, 9)",
+    });
   };
 
   const colorchangeMode5 = () => {
@@ -105,6 +143,11 @@ function App() {
 
     setbtnKaColour("light");
     document.title = "TextUtils- Coloured Mode";
+
+    setAboutStyle({
+      color: "white",
+      backgroundColor: "rgb(1, 71, 98)",
+    });
   };
 
   const toLowerCase = () => {
@@ -158,50 +201,67 @@ function App() {
 
   return (
     <>
-      <OurNavbar
-        mode={Mode}
-        nav={Nav}
-        togglemode={ToggleMode}
-        btntext={Btn}
-        title="PropTitle"
-        about="About Us"
-        source="Source"
-        source1="Facebook"
-        source2="Instagram"
-        source3="Whatsapp"
-        coloredMode1={colorchangeMode1}
-        coloredMode2={colorchangeMode2}
-        coloredMode3={colorchangeMode3}
-        coloredMode4={colorchangeMode4}
-        coloredMode5={colorchangeMode5}
-      />
-      <div id="alertTextCon">
-      <div id="alertheight" style={{backgroundColor: Nav =="dark"? '#212529': 'white'}}>
-      <Alert alerthaiye={alertnull} />
-      </div>
-      <TextForm
-        heading="Enter the text to analyze!!"
-        mystyle={Mystyle}
-        btnColour={btnKaColour}
-        handleButtonLower={toLowerCase}
-        handleButtonUpper={toUpperCase}
-        handleButtonClear={toClear}
-        handleOnChange={changeText}
-        text={variesText}
-        textLength={variesText.length}
-        totalChar={variesText.split(" ").filter((elem)=>{ return elem.length!=0 }).length}
-        time={variesText.split(" ").length * (1 / 238)}
-        preview={variesText}
-      />
-      </div>
+      <Router>
+        <OurNavbar
+          mode={Mode}
+          nav={Nav}
+          togglemode={ToggleMode}
+          btntext={Btn}
+          title="PropTitle"
+          about="About Us"
+          source="Source"
+          source1="Facebook"
+          source2="Instagram"
+          source3="Whatsapp"
+          coloredMode1={colorchangeMode1}
+          coloredMode2={colorchangeMode2}
+          coloredMode3={colorchangeMode3}
+          coloredMode4={colorchangeMode4}
+          coloredMode5={colorchangeMode5}
+        />
+        <div id="alertTextCon">
+          <div
+            id="alertheight"
+            style={{ backgroundColor: Nav == "dark" ? "#212529" : "white" }}
+          >
+            <Alert alerthaiye={alertnull} />
+          </div>
+          {/* <About /> */}
+          <Switch>
+            <Route path="/about">
+              <About style={aboutStyle} />
+            </Route>
+            <Route path="/">
+              <TextForm
+                heading="Enter the text to analyze!!"
+                mystyle={Mystyle}
+                btnColour={btnKaColour}
+                handleButtonLower={toLowerCase}
+                handleButtonUpper={toUpperCase}
+                handleButtonClear={toClear}
+                handleOnChange={changeText}
+                text={variesText}
+                textLength={variesText.length}
+                totalChar={
+                  variesText.split(" ").filter((elem) => {
+                    return elem.length != 0;
+                  }).length
+                }
+                time={variesText.split(" ").length * (1 / 238)}
+                preview={variesText}
+              />
+            </Route>
+          </Switch>
+        </div>
 
-      {/* React always partially matches the path so we need to write *exat* just to make it clear
+        {/* React always partially matches the path so we need to write *exat* just to make it clear
 
           path="/users" --> component1      
           path="/users/home" --> component2  
           in both cases it will show component 1 as it will partially match the keyword /users
           
           so we need to write exact to see the exact path ex- /users/home */}
+      </Router>
     </>
   );
 }

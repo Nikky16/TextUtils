@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
 
 export default function Navbar(props) {
   return (
@@ -8,9 +8,9 @@ export default function Navbar(props) {
         className={`navbar navbar-expand-lg navbar-${props.nav} bg-${props.nav}`}
       >
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <Link className="navbar-brand" to="/">
             {props.title}
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -25,44 +25,44 @@ export default function Navbar(props) {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
+                <Link className="nav-link active" aria-current="page" to="/about">
                   {props.about}
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <Link className="nav-link" to="/">
                   {props.contact}
-                </a>
+                </Link>
               </li>
               <li className="nav-item dropdown">
-                <a
+                <Link
                   className="nav-link dropdown-toggle"
-                  href="#"
+                  to="/"
                   id="navbarDropdown"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
                   {props.source}
-                </a>
+                </Link>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link className="dropdown-item" to="/">
                       {props.source1}
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link className="dropdown-item" to="/">
                       {props.source2}
-                    </a>
+                    </Link>
                   </li>
                   <li>
                     <hr className="dropdown-divider" />
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link className="dropdown-item" to="/">
                       {props.source3}
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </li>
@@ -105,6 +105,108 @@ export default function Navbar(props) {
         </div>
       </nav>
     </div>
+    // <div>
+    //   <nav
+    //     className={`navbar navbar-expand-lg navbar-${props.nav} bg-${props.nav}`}
+    //   >
+    //     <div className="container-fluid">
+    //       <Link className="navbar-brand" href="#">
+    //         {props.title}
+    //       </Link>
+    //       <button
+    //         className="navbar-toggler"
+    //         type="button"
+    //         data-bs-toggle="collapse"
+    //         data-bs-target="#navbarSupportedContent"
+    //         aria-controls="navbarSupportedContent"
+    //         aria-expanded="false"
+    //         aria-label="Toggle navigation"
+    //       >
+    //         <span className="navbar-toggler-icon"></span>
+    //       </button>
+    //       <div className="collapse navbar-collapse" id="navbarSupportedContent">
+    //         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+    //           <li className="nav-item">
+    //             <a className="nav-link active" aria-current="page" href="#">
+    //               {props.about}
+    //             </a>
+    //           </li>
+    //           <li className="nav-item">
+    //             <a className="nav-link" href="#">
+    //               {props.contact}
+    //             </a>
+    //           </li>
+    //           <li className="nav-item dropdown">
+    //             <a
+    //               className="nav-link dropdown-toggle"
+    //               to="/"
+    //               id="navbarDropdown"
+    //               role="button"
+    //               data-bs-toggle="dropdown"
+    //               aria-expanded="false"
+    //             >
+    //               {props.source}
+    //             </a>
+    //             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+    //               <li>
+    //                 <a className="dropdown-item" href="#">
+    //                   {props.source1}
+    //                 </a>
+    //               </li>
+    //               <li>
+    //                 <a className="dropdown-item" href="#">
+    //                   {props.source2}
+    //                 </a>
+    //               </li>
+    //               <li>
+    //                 <hr className="dropdown-divider" />
+    //               </li>
+    //               <li>
+    //                 <a className="dropdown-item" href="#">
+    //                   {props.source3}
+    //                 </a>
+    //               </li>
+    //             </ul>
+    //           </li>
+    //         </ul>
+    //         <div>
+    //           <button
+    //             type="button"
+    //             className="btn btn-secondary colorbatan"
+    //             onClick={props.coloredMode1}
+    //           ></button>
+    //           <button
+    //             type="button"
+    //             className="btn btn-success colorbatan"
+    //             onClick={props.coloredMode2}
+    //           ></button>
+    //           <button
+    //             type="button"
+    //             className="btn btn-danger colorbatan"
+    //             onClick={props.coloredMode3}
+    //           ></button>
+    //           <button
+    //             type="button"
+    //             className="btn btn-warning colorbatan"
+    //             onClick={props.coloredMode4}
+    //           ></button>
+    //           <button
+    //             type="button"
+    //             className="btn btn-info colorbatan"
+    //             onClick={props.coloredMode5}
+    //           ></button>
+    //         </div>
+    //         <button
+    //           className={`btn btn-${props.mode} batan`}
+    //           type="text"
+    //           onClick={props.togglemode}
+    //         >
+    //           {props.btntext}
+    //         </button>
+    //       </div>
+    //     </div>
+    //   </nav>
+    // </div>
   );
 }
 

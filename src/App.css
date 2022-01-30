@@ -68,10 +68,20 @@
   margin-bottom: 0rem;
 }
 #alertheight{
-  height: 50px;
+  height: 58px;
 }
 #text{
   height: 100px;
   width: 100%;
   border-radius: 5px;
+}
+@media screen and (max-width: 600px) and (min-width: 370px) {
+  #alertheight{
+    height: 58px;
+  }
+}
+@media screen and (max-width: 370px) and (min-width: 200px) {
+  #alertheight{
+    height: 75px;
+  }
 }
